@@ -1,5 +1,340 @@
 /* Основные стили проекта. Это стили для темы, которую вы верстаете первой. */
 
 .page {
-  /* сохраните в разметке и стилях класс page у тега body. Он удобен, чтобы составлять селекторы для разных цветовых тем. */
+  background-color: var(--bg-color, rgb(0, 8, 51));
+  background-image: var(--bg-image, url('../images/cover-image-dark.png'));
+  background-position: center; /* центрирую фоновое изобр*/
+  background-size: cover;
+  background-repeat: no-repeat; /* под вопросом испол */
+  background-attachment: fixed;
+  font-family: var(--main-font, "IBM Plex mono"), sans-serif;
+  font-size: var(--main-text-font-size, 1.125rem);
+}
+
+.header {
+  display: grid;
+  grid-template-rows: 1fr min-content 1fr;
+  block-size: 100vh;
+  max-height: 178vw;
+  padding: var(--page-padding);
+  margin-bottom: 10.6vw;
+}
+
+.decorated-zone::before { /* для хедера и футера*/
+  content: "";
+  position: absolute;
+  top: var(--page-padding, 10px);
+  right: var(--page-padding, 10px);
+  block-size: 25px;
+  aspect-ratio: 1;
+  /* border-top: 1px, solid var(--accent-color, #FF0070);
+  border-right: 1px solid var(--accent-color, #FF0070); 
+  border-bottom: none;
+  border-left: none; */
+  border-inline-end: 1px var(--decor-color, rgb(255 0 112)) solid;
+  border-block-start: 1px var(--decor-color, rgb(255 0 112)) solid;
+}
+
+.decorated-zone::after { /* для хедера и футера*/
+  content: "";
+  position: absolute;
+  bottom: var(--page-padding, 10px);
+  left: var(--page-padding, 10px);
+  block-size: 25px;
+  aspect-ratio: 1;
+  border-block-end: 1px var(--decor-color, rgb(255 0 112)) solid;
+  border-inline-start: 1px var(--decor-color, rgb(255 0 112)) solid;
+}
+
+
+.header__design-element { /* стили для элемента "rec" */
+  position: absolute;
+  height: 100%; /* грид-контейнер заполняет всю доступную высоту родителя*/
+  color: var(--accent-color, #FF0070);
+  text-transform: uppercase;
+  font-size: var(--main-text-font-size, 1.125rem);
+  line-height: 1.39; /* 139% от текущего размера текста*/
+  right: calc(28px + var(--page-padding, 10px)); /* (28px + 10 пк) фикс отступа - расстояние на мобилке*/
+  top: var(--page-padding, 10px);
+  block-size: 20px;
+  display: block;
+}
+
+.header__design-element::after { /* стилизую точку справа от надписи rec*/
+  content: "";
+  position: absolute;
+  right: -19px;
+  top: var(--page-padding, 10px);
+  block-size: 9px;
+  aspect-ratio: 1; /* квадрат */
+  border-radius: 50%;
+  background-color: var(--accent-color, #FF0070);
+  box-shadow: 0px 0px 4px 2px var(--accent-color, #FF0070);
+}
+
+.header__theme-menu {
+  align-self: center;
+  justify-self: end;
+  min-width: var(--header-menu-width);
+}
+
+.header__theme-menu-list {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.header__theme-menu-button {
+  display: flex;
+  width: 100%;
+  max-height: var(--header-menu-height);
+  padding: 4px 12px;
+  background-color: transparent;
+  font-size: var(--main-text-font-size, 1.125rem);
+  border: 1px transparent;
+  color: var(--accent-color, #FF0070);
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.header__theme-menu-button_active {
+  border: 1px var(--accent-color, #FF0070) solid;
+  box-sizing: border-box;
+}
+
+.header__theme-menu-button:hover {
+  border: 1px var(--hover-border-color) solid;
+}
+
+.header__theme-menu-button:focus {
+  outline: none;
+}
+
+.header__theme-menu-button:focus-visible {
+  border-bottom: 1px var(--accemt-color, rgb(255 0 112)) solid;
+}
+
+.main-heading {
+  font-size: var(--header-menu-heading, clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem));
+  line-height: 83%;
+  font-family: inherit;
+  font-weight: bold;
+  color: var(--title-color, #DB00FF);
+  text-shadow: 4px 4px 0 var(--background-text-color, rgb(255 0 112));
+}
+
+.header__text {
+  display: flex;
+  min-height: var(--header-text-block-height);
+  justify-content: flex-start;
+  align-self: center;
+  background-color: var(--accent-color, #FF0070);
+  /*padding-bottom: 4vw;  15px */
+}
+
+.header__paragraph {
+  display: flex;
+  width: 100%;
+  color: var(--header-paragraph-color, #000028);
+  width: fit-content;
+  max-width: 100%;
+}
+
+.title-decor {
+  font-weight: bold;
+  text-align: left;
+  background-color: var(--background-text-color, #FF0070);
+  color: var(--header-paragraph-color, rgb(0 8 51));
+  font-size: var(--main-text-font-size, 1.125rem);
+  /*text-wrap: balance;*/
+}
+
+.content {
+  /* Стили для основного контента страницы */
+  padding: 0 var(--page-padding);
+}
+
+.content__section:not(:last-child) {
+  margin-block-end: var(--content__section-margin);
+}
+
+.content__section-title {
+  margin-block-end: var(--margin-block-end, 20px);
+  color: var(--title-paragraph-color, rgb(255 0 112));
+  font-weight: bold;
+  font-size: var(--main-text-font-size, 1.125rem);
+  line-height: var(--main-line-height);
+}
+
+ /*
+.content__section-list {
+  Стили для списков внутри секций контента
+} */
+
+.content__section-list-item:has(.content__images-wrapper) {
+  margin-block-start: 50px;
+}
+
+.content__section-list-item-title {
+  margin-block-end: 10px;
+  font-size: var(--main-font-size, 1.125rem);
+  line-height: var(--main-line-height);
+}
+
+.content__section-text {
+  margin-block-end: 20px;
+  color: var(--main-text-color, #F1B2CE);
+  line-height: var(--main-line-height);
+}
+
+.content__word-link {
+  /*color: var(--main-text-color, #F1B2CE);*/
+  text-shadow: 2px 2px 0 var(--background-text-color, rgb(255 0 112));
+  text-decoration: none;
+}
+
+.content__word-link:hover {
+  border-bottom: 1px var(--main-font-color) solid;
+}
+
+.content__word-link:focus {
+  outline: none;
+}
+
+.content__section-title-article {
+  padding-top: var(--content__section-title-article);
+}
+
+.title-decor-div-block {
+  padding-top: var(--title-decor-div-block);
+}
+
+.content__section-article-title {
+  margin-block-end: var(--margin-block-end);
+}
+
+.no-bold-font {
+  font-weight: normal;
+}
+
+/* 
+.content__section-images {
+Стили для секции с изображениями
+} */
+
+.content__images-title {
+  margin-block-end: var(--page-padding);
+}
+
+.content__images-wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.content__images-wrapper img {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.footer {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  block-size: 100vh;
+  align-items: center;
+  padding: var(--page-padding);
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+
+  .header {
+    padding-left: 0;
+  }
+
+  .header__text {
+    width: calc((100% - var(--page-padding)) / 2);
+    justify-self: end;
+  }
+
+  .content__section:nth-child(odd):not(.content__section-images) {
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    gap: 20px;
+  }
+
+  .content__section-title {
+    width: 236px;
+  }
+
+  .content__section-list {
+    grid-column: 2;
+  }
+
+  .content__images-wrapper {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, auto);
+    gap: 20px;
+  }
+
+  .content__images-wrapper img:nth-child(1) {
+    grid-column: 1/3;
+  }
+
+  .content__images-wrapper img:nth-child(2) {
+    grid-column: 3;
+    grid-row: -4/-2;
+  }
+
+  .content__images-wrapper img:nth-child(3) {
+    grid-column: 1;
+    grid-row: 2/4;
+  }
+
+  .content__images-wrapper img:nth-child(4) {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .content__images-wrapper img:nth-child(5) {
+    grid-column: 2/-1;
+    grid-row: 3;
+  }
+}
+
+@media (min-width: 1024px) {
+
+  .header__theme-menu {
+    align-self: start;
+    justify-self: center;
+    padding-inline-start: var(--page-padding);
+    padding-block: 0;
+  }
+
+  .content__section-list {
+    display: grid;
+    max-height: 431px;
+    grid-template-rows: repeat(3, 1fr);
+  }
+
+  .header__theme-menu-list {
+    flex-direction: row;
+    max-width: 230px;
+  }
+
+  .content__section-title {
+    width: 315px;
+  }
+
+  .content__section:nth-child(even) .content__section-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
 }

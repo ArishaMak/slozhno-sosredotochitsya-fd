@@ -1,16 +1,37 @@
-/*
-  Специально для светлой темы при наличии класса.
-  Здесь окажутся стили, которые нужно переопределить принудительно,
-  переключая тему
-*/
-
 :root.theme-light {
-  /* сохраните этот селектор в приведённом виде.
-    Так стили написанные ниже будут иметь больший вес,
-    чем стили в медиазапросе предпочтений пользователя
-  */
+  --bg-image: url('../images/cover-image-light.png');
+  --bg-color: rgb(255, 238, 246);
+  --accent-color: #353430;
+  --hover-border-color: rgba(50 49 45/ 0.4);
+  --title-color: #FFC2E6;
+  --header-paragraph-color: #353430;
+  --background-text-color: #FF8DCB;
+  --decor-color: #353430;
+  --title-paragraph-color: #353430;
+  --main-text-color: #353430;
 }
 
-.theme-light .page {
-  /* Вам также нужно будет написать ряд подобных селекторов */
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg-image: url('../images/cover-image-light.png');
+    --bg-color: rgb(255, 238, 246);
+    --accent-color: #353430;
+    --hover-border-color: rgba(50 49 45/ 0.4);
+    --title-color: #FFC2E6;
+    --header-paragraph-color: #353430;
+    --background-text-color: #FF8DCB;
+    --decor-color: #353430;
+    --title-paragraph-color: #353430;
+    --main-text-color: #353430;
+}
+
+.header__design-element, /* в этом мете возникает ошибка, не знаю, как ее исправить..*/
+.header__design-element::after {
+    display: none;
+}
+}
+
+.theme-light .header__design-element,
+.theme-light .header__design-element::after { /* <-- ИСПРАВЛЕНИЕ: ДОБАВЛЕН .theme-light К ОБАИМ ЧАСТЯМ СЕЛЕКТОРА */
+  display: none;
 }

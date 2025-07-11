@@ -2,3 +2,49 @@
   Переменные для вашего проекта
   и их переопределение под различные устройства
 */
+:root {
+  --page-padding: 10px;
+  --bg-image: url('../images/cover-image-dark.png');
+  --decor-color: #FF0070;
+  --bg-color: rgb(0, 8, 51);
+  --accent-color: #FF0070;
+  --hover-border-color: rgba(255, 0, 112, 0.4);
+  --title-color: #DB00FF;
+  --main-font: "IBM Plex mono";
+  --base-font-size: 16px; /*базовый размер шрифта на мобилках*/
+  --main-text-font-size: 1.125rem; /*18/16*/
+  --main-line-height: 23.4px;
+  --header-menu-width: 70px;
+  --header-menu-height: 26px;
+  --header-menu-heading: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  --header-text-block-height: 117px;
+  --header-paragraph-color: #000028;
+  --title-paragraph-color: #FF0070;
+  --main-line-height: 23.4px;
+  --main-text-color: #F1B2CE;
+  --background-text-color: #FF0070;
+  --content__section-margin: 20px;
+  --margin-block-end: 20px;
+  --title-decor-div-block: 0px;
+  --content__section-title-article: 0px;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --page-padding: 20px;
+    --header-menu-heading: clamp(7.5rem, calc(0.903vw + 0.564rem), 9.8125rem);
+    --content__section-margin: 60px;
+    --margin-block-end: 20px;
+    --title-decor-div-block: 20px;
+    --content__section-title-article: 20px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --header-menu-width: 0;
+    --header-menu-heading: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+    --header-text-height: 71px;
+    --header-text-block-height: 71px;
+  }
+}
