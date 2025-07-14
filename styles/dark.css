@@ -1,12 +1,38 @@
-@media (prefers-color-scheme: dark) {
+:root.theme-dark { /* Эти переменные уже есть в основном CSS, если это дефолтная тема */
+  --bg-color: rgb(0, 8, 51);
+  --bg-image: url('../images/cover-image-dark.png');
+  --decor-color: rgb(255 0 112);
+  --accent-color: #FF0070;
+  --hover-border-color: rgba(255 0 112 / 0.4);
+  --title-color: #DB00FF;
+  --header-paragraph-color: #000028;
+  --background-text-color: rgb(255 0 112);
+  --title-paragraph-color: rgb(255 0 112);
+  --main-text-color: #F1B2CE;
+}
+
+/*@media (prefers-color-scheme: dark) {
   
   .header__design-element,
   .header__design-element::after {
     display: block;
   }
-}
+}*/
 
 .theme-dark .header__design-element,
 .header__design-element::after {
-  display: block;
+  /*display: block;*/
+  display: flex;
+}
+
+@media (min-width: 768px) {
+  .header__design-element::after {
+  margin-block-start: -2px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .header__design-element::after {
+  margin-block-start: -4px;
+  }
 }

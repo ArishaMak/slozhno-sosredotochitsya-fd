@@ -12,6 +12,10 @@ body {
   margin: 0 auto;
 }
 
+.page {
+  box-sizing: border-box;
+}
+
 h1,
 h2,
 h3,

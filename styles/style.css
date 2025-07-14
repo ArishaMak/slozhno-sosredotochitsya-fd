@@ -3,7 +3,7 @@
 .page {
   background-color: var(--bg-color, rgb(0, 8, 51));
   background-image: var(--bg-image, url('../images/cover-image-dark.png'));
-  background-position: center; /* центрирую фоновое изобр*/
+  background-position: center; /* центрирую фоновое изобр */
   background-size: cover;
   background-repeat: no-repeat; /* под вопросом испол */
   background-attachment: fixed;
@@ -11,16 +11,15 @@
   font-size: var(--main-text-font-size, 1.125rem);
 }
 
-.header {
-  display: grid;
-  grid-template-rows: 1fr min-content 1fr;
-  block-size: 100vh;
-  max-height: 178vw;
-  padding: var(--page-padding);
-  margin-bottom: 10.6vw;
+/* общие стили для decorated-zone, header и footer */
+.decorated-zone {
+    position: relative; /*для абсолютного позиционирования ::before и ::after*/
+    padding: var(--page-padding);
+    padding-top: calc(var(--page-padding) + 25px);
+    padding-bottom: var(--header-padding-bottom, 40px);
 }
 
-.decorated-zone::before { /* для хедера и футера*/
+.decorated-zone::before { /* для хедера и футера; правый верхний*/
   content: "";
   position: absolute;
   top: var(--page-padding, 10px);
@@ -35,7 +34,7 @@
   border-block-start: 1px var(--decor-color, rgb(255 0 112)) solid;
 }
 
-.decorated-zone::after { /* для хедера и футера*/
+.decorated-zone::after { /* для хедера и футера; нижний левый*/
   content: "";
   position: absolute;
   bottom: var(--page-padding, 10px);
@@ -46,27 +45,53 @@
   border-inline-start: 1px var(--decor-color, rgb(255 0 112)) solid;
 }
 
+/*.decorated-zone::rec-point {
+  content: "";
+  position: absolute;
+  top: calc(var(--page-padding) + 2px); 
+  block-size: 9px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background-color: var(--accent-color, #FF0070);
+  box-shadow: 0px 0px 4px 2px var(--accent-color, #FF0070);
+}*/
+
+.header {
+  display: grid;
+  grid-template-rows: 1fr min-content 1fr;
+  block-size: 100vh;
+  min-block-size: 668px; /*добавила*/
+  max-height: 178vw;
+  padding: var(--page-padding);
+  margin-bottom: 10.6vw;
+}
 
 .header__design-element { /* стили для элемента "rec" */
   position: absolute;
-  height: 100%; /* грид-контейнер заполняет всю доступную высоту родителя*/
+  /* height: 100%; грид-контейнер заполняет всю доступную высоту родителя*/
   color: var(--accent-color, #FF0070);
   text-transform: uppercase;
   font-size: var(--main-text-font-size, 1.125rem);
   line-height: 1.39; /* 139% от текущего размера текста*/
   right: calc(28px + var(--page-padding, 10px)); /* (28px + 10 пк) фикс отступа - расстояние на мобилке*/
   top: var(--page-padding, 10px);
-  block-size: 20px;
-  display: block;
+  /*block-size: 20px; убрала*/
+  display: flex;
 }
 
-.header__design-element::after { /* стилизую точку справа от надписи rec*/
+.header__design-element::before {
+  content: 'REC';
+	color: var(--accent-color, #ff0070);
+}
+
+.header__design-element::after { 
   content: "";
   position: absolute;
   right: -19px;
-  top: var(--page-padding, 10px);
+  /*top: var(--page-padding, 10px);*/
+  top: 50%; /*центрирую вертикально относительно родителя*/
   block-size: 9px;
-  aspect-ratio: 1; /* квадрат */
+  aspect-ratio: 1;
   border-radius: 50%;
   background-color: var(--accent-color, #FF0070);
   box-shadow: 0px 0px 4px 2px var(--accent-color, #FF0070);
@@ -92,7 +117,7 @@
   padding: 4px 12px;
   background-color: transparent;
   font-size: var(--main-text-font-size, 1.125rem);
-  border: 1px transparent;
+  border: 1px solid transparent;
   color: var(--accent-color, #FF0070);
   cursor: pointer;
   justify-content: center;
@@ -103,6 +128,7 @@
 .header__theme-menu-button_active {
   border: 1px var(--accent-color, #FF0070) solid;
   box-sizing: border-box;
+  pointer-events: none; /*добавила*/
 }
 
 .header__theme-menu-button:hover {
@@ -114,7 +140,7 @@
 }
 
 .header__theme-menu-button:focus-visible {
-  border-bottom: 1px var(--accemt-color, rgb(255 0 112)) solid;
+  border-bottom: 1px var(--accent-color, rgb(255 0 112)) solid;
 }
 
 .main-heading {
@@ -128,7 +154,7 @@
 
 .header__text {
   display: flex;
-  min-height: var(--header-text-block-height);
+  /*min-height: var(--header-text-block-height); убрала*/
   justify-content: flex-start;
   align-self: center;
   background-color: var(--accent-color, #FF0070);
@@ -161,6 +187,10 @@
   margin-block-end: var(--content__section-margin);
 }
 
+.content__section-transfer {
+  max-height: var(--content-section-height);/*498px;!*/
+  }
+
 .content__section-title {
   margin-block-end: var(--margin-block-end, 20px);
   color: var(--title-paragraph-color, rgb(255 0 112));
@@ -191,24 +221,31 @@
 }
 
 .content__word-link {
-  /*color: var(--main-text-color, #F1B2CE);*/
   text-shadow: 2px 2px 0 var(--background-text-color, rgb(255 0 112));
   text-decoration: none;
 }
 
 .content__word-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px; 
   border-bottom: 1px var(--main-font-color) solid;
 }
 
 .content__word-link:focus {
-  outline: none;
+  outline: 1px solid var(--main-text-color, #FF0070);
+  outline-offset: 3px;
+}
+
+.content__word-link:focus-visible {
+    outline: 1px solid var(--main-text-color, #FF0070);
+    outline-offset: 2px;
 }
 
 .content__section-title-article {
-  padding-top: var(--content__section-title-article);
+  padding-top: var(--section-article-title-spacing);
 }
 
-.title-decor-div-block {
+.heading-decoration {
   padding-top: var(--title-decor-div-block);
 }
 
@@ -233,6 +270,7 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 10px;
+  margin-block-end: 40px;
 }
 
 .content__images-wrapper img {
@@ -247,6 +285,7 @@
   display: grid;
   grid-template-columns: 1fr;
   block-size: 100vh;
+  min-block-size: 668px; /*добавила*/
   align-items: center;
   padding: var(--page-padding);
   text-align: center;
@@ -263,7 +302,11 @@
     justify-self: end;
   }
 
-  .content__section:nth-child(odd):not(.content__section-images) {
+  .content {
+    margin-block-start: -20px;
+  }
+
+  .content__section_layout_odd { /*переименовала селектор, теперь номер блока не задействован*/
     display: grid;
     grid-template-columns: min-content 1fr;
     gap: 20px;
@@ -273,8 +316,12 @@
     width: 236px;
   }
 
+  .content__title-section {
+    margin-top: 15px;
+  }
+
   .content__section-list {
-    grid-column: 2;
+    grid-column: 3;
   }
 
   .content__images-wrapper {
@@ -306,6 +353,10 @@
     grid-column: 2/-1;
     grid-row: 3;
   }
+
+  .footer {
+     margin-block-start: 60px;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -319,8 +370,8 @@
 
   .content__section-list {
     display: grid;
-    max-height: 431px;
-    grid-template-rows: repeat(3, 1fr);
+    /*max-height: 431px; удалила*/
+    /*grid-template-rows: repeat(3, 1fr);*/
   }
 
   .header__theme-menu-list {
@@ -328,13 +379,27 @@
     max-width: 230px;
   }
 
+  .content {
+    margin-block-start: -50px;
+  }
+
   .content__section-title {
     width: 315px;
   }
 
-  .content__section:nth-child(even) .content__section-list {
+  .content__section_layout_even .content__section-list { /*теперь стилизую по вспомогательному классу; отказалась от стилиз по номеру блока*/
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
+    /*max-height: 431px;*/
+    /*align-items: stretch;*/
+  }
+
+  .content__section-odd-layout {
+    margin-block-start: -20px;
+  }
+
+  .footer {
+     margin-block-start: 60px;
   }
 }

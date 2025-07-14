@@ -6,9 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="color-scheme" content="dark light" />
     <title>Сложно сосредоточиться</title>
-    <meta name="description" content="Что делать, когда не можешь делать ничего.
-    Или почему нам так сложно сконцентрироваться, особенно когда очень надо" />
-    <link rel="stylesheet" href="./fonts/fonts.css" /> 
+    <meta
+      name="description"
+      content="Что делать, когда не можешь делать ничего. Или почему нам так сложно сконцентрироваться, особенно когда очень надо"
+    />
+    <link rel="stylesheet" href="./fonts/fonts.css" />
     <link rel="stylesheet" href="./styles/globals.css" />
     <link rel="stylesheet" href="./styles/variables.css" />
     <link rel="stylesheet" href="./styles/style.css" />
@@ -20,12 +22,14 @@
   </head>
   <body class="page">
     <header class="header decorated-zone">
-      <span aria-hidden="true" class="header__design-element">rec</span>
+      <div class="header__design-element" aria-hidden="true"></div>
       <nav class="header__theme-menu">
         <ul class="header__theme-menu-list">
           <li>
             <button
               class="header__theme-menu-button header__theme-menu-button_type_light"
+              type="button"
+              data-theme="light"
             >
               день
             </button>
@@ -33,50 +37,53 @@
           <li>
             <button
               class="header__theme-menu-button header__theme-menu-button_active header__theme-menu-button_type_auto"
-              disabled
-            >
+              type="button"
+              data-theme="auto"
+              >
               авто
             </button>
           </li>
           <li>
             <button
               class="header__theme-menu-button header__theme-menu-button_type_dark"
+              type="button"
+              data-theme="dark"
             >
               неон
             </button>
           </li>
         </ul>
       </nav>
-      <h1 class="main-heading">
-        no focus
-      </h1>
-      <div class="header__text"> 
-          <p class="header__paragraph title-decor">
-            Что делать, когда не можешь делать ничего<br> 
-            Или почему нам так сложно сконцентрироваться, особенно когда очень надо
-          </p>
+      <h1 class="main-heading">no focus</h1>
+      <div class="header__text">
+        <p class="header__paragraph title-decor">
+          Что делать, когда не можешь делать ничего<br />
+          Или почему нам так сложно сконцентрироваться, особенно когда очень
+          надо
+        </p>
       </div>
     </header>
     <main class="content">
-      <section class="content__section">
-        <h2 class="content__section-title">
-          Почему сосредоточиться так сложно
-        </h2>
+      <section class="content__section content__section_layout_odd"> <h2 class="content__section-title">Почему сосредоточиться так сложно</h2>
         <ul>
           <li class="content__section-list-item">
             <h3 class="title-decor content__section-list-item-title">
               Многозадачность
             </h3>
-             <p class="content__section-text">
+            <p class="content__section-text">
               Особенно сложно сосредоточиться, когда задач много и все они —
               важные. Где же легендарная многозадачность, когда она так нужна
               вам (и всем нанимающим менеджерам этого мира)? А дело в том, что
               её просто не существует. Исследователи
-              <a href="#" class="content__word-link">выяснили</a>, что мозгу тяжело
-              концентрироваться даже на двух делах одновременно. А когда в поле
-              внимания попадает несколько важных задач, организм паникует и
-              выделяет кортизол и адреналин — «гормоны стресса». Из-за этого мы
-              работаем невнимательно: ошибаемся и быстро устаём.
+              <a
+                href="https://dana.org/article/multicosts-of-multitasking/"
+                class="content__word-link"
+                >выяснили</a
+              >, что мозгу тяжело концентрироваться даже на двух делах
+              одновременно. А когда в поле внимания попадает несколько важных
+              задач, организм паникует и выделяет кортизол и адреналин —
+              «гормоны стресса». Из-за этого мы работаем невнимательно:
+              ошибаемся и быстро устаём.
             </p>
           </li>
           <li class="content__section-list-item">
@@ -96,10 +103,7 @@
           </li>
         </ul>
       </section>
-      <section class="content__section">
-        <h2 class="content__section-title">
-          Что снижает концентрацию внимания?
-        </h2>
+      <section class="content__section content__section-transfer content__section_layout_even"> <h2 class="content__section-title content__title-section">Что снижает концентрацию внимания?</h2>
         <ul class="content__section-list">
           <li class="content__section-list-item">
             <h3 class="title-decor content__section-list-item-title">
@@ -141,16 +145,13 @@
           </li>
         </ul>
       </section>
-      <section class="content__section">
-        <div class="content__section-title-article">
-          <h2 class="content__section-title">
+      <section class="content__section content__section_layout_odd content__section-odd-layout"> <div class="section-title-wrapper"> <h2 class="content__section-title content__title-section">
             Как концентрироваться лучше, чем золотая рыбка (то есть дольше трёх
             секунд)
           </h2>
         </div>
         <article>
-          <div class="title-decor-div-block">
-            <h3 class="title-decor content__section-article-title">
+          <div class="heading-decoration"> <h3 class="title-decor content__section-article-title">
               5 простых (на самом деле не очень) советов
             </h3>
           </div>
@@ -182,17 +183,20 @@
               </p>
             </li>
             <li class="content__section-list-item">
-              <h4 class="content__section-list-item-title title-decor no-bold-font" >
+              <h4 class="content__section-list-item-title title-decor no-bold-font">
                 Прогуляйтесь
               </h4>
               <p class="content__section-text">
                 Или даже пробегитесь. Лучше найти парк или лес: один эксперимент
-                <a href="#" class="content__word-link">показал</a>, что созерцание природы повышает концентрацию, в то время
-                как после просмотра городских пейзажей она наоборот понижается.
-                Можно совместить прогулку с физическими упражнениями или бегом —
-                так в мозг поступит ещё больше кислорода и он будет лучше
-                работать. Но и простая двадцатиминутная прогулка — тоже отличный
-                вариант.
+                <a
+                  href="https://www.sciencedirect.com/science/article/abs/pii/S0272494415000328"
+                  class="content__word-link"
+                  >показал</a
+                >, что созерцание природы повышает концентрацию, в то время как
+                после просмотра городских пейзажей она наоборот понижается. Можно
+                совместить прогулку с физическими упражнениями или бегом — так в
+                мозг поступит ещё больше кислорода и он будет лучше работать. Но
+                и простая двадцатиминутная прогулка — тоже отличный вариант.
               </p>
             </li>
             <li class="content__section-list-item">

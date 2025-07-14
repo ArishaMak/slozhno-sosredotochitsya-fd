@@ -23,10 +23,12 @@
   --main-line-height: 23.4px;
   --main-text-color: #F1B2CE;
   --background-text-color: #FF0070;
-  --content__section-margin: 20px;
+  --content__section-margin: 50px;
   --margin-block-end: 20px;
   --title-decor-div-block: 0px;
-  --content__section-title-article: 0px;
+  --section-article-title-spacing: 0px;
+  --content-section-height: 1919px;
+  --header-padding-bottom: 40px;
 }
 
 @media (min-width: 768px) {
@@ -36,7 +38,9 @@
     --content__section-margin: 60px;
     --margin-block-end: 20px;
     --title-decor-div-block: 20px;
-    --content__section-title-article: 20px;
+    --section-article-title-spacing: 20px;
+    --content-section-height: 1296px;
+    --header-padding-bottom: 40px;
   }
 }
 
@@ -46,5 +50,8 @@
     --header-menu-heading: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
     --header-text-height: 71px;
     --header-text-block-height: 71px;
+    --content-section-height: 1015px;
+    --content__section-margin: 60px;
+    --header-padding-bottom: 60px;
   }
 }
