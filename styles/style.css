@@ -61,7 +61,7 @@
   grid-template-rows: 1fr min-content 1fr;
   block-size: 100vh;
   min-block-size: 668px; /*добавила*/
-  max-height: 178vw;
+  /*max-height: 178vw; удалила*/
   padding: var(--page-padding);
   margin-bottom: 10.6vw;
 }
@@ -187,9 +187,9 @@
   margin-block-end: var(--content__section-margin);
 }
 
-.content__section-transfer {
-  max-height: var(--content-section-height);/*498px;!*/
-  }
+/*.content__section-transfer {
+  max-height: var(--content-section-height);
+}*/
 
 .content__section-title {
   margin-block-end: var(--margin-block-end, 20px);
@@ -221,14 +221,26 @@
 }
 
 .content__word-link {
-  text-shadow: 2px 2px 0 var(--background-text-color, rgb(255 0 112));
+  position: relative;
+  /*text-shadow: 2px 2px 0 var(--background-text-color, rgb(255 0 112));*/
   text-decoration: none;
+}
+
+/*задаю тень через псевдоэлемент*/
+.content__word-link::before {
+  content: attr(data-text);
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  z-index: -1;
+  color: var(--background-text-color, rgb(255 0 112));
+  pointer-events: none;
 }
 
 .content__word-link:hover {
   text-decoration: underline;
   text-underline-offset: 3px; 
-  border-bottom: 1px var(--main-font-color) solid;
+  text-decoration-color: var(--main-font-color);/*задаю цвет подчеркивания, но не юзаю бордер-батом*/
 }
 
 .content__word-link:focus {
@@ -237,8 +249,8 @@
 }
 
 .content__word-link:focus-visible {
-    outline: 1px solid var(--main-text-color, #FF0070);
-    outline-offset: 2px;
+  outline: 1px solid var(--main-text-color, #FF0070);
+  outline-offset: 2px;
 }
 
 .content__section-title-article {
